@@ -12,12 +12,11 @@ function add(user) {
 }
 
 function find() {
-  return db("users_table");
+  return db("users_table").select( "id","username").orderBy('id');
 }
 function findById(id) {
   return db("users_table").where({ id }).first();
 }
 function findBy(filter) {
-  return db("users_table")
-    .where(filter)
+  return db("users_table").where(filter);
 }
