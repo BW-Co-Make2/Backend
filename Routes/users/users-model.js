@@ -8,7 +8,10 @@ module.exports = {
 const db = require("../../data/config");
 
 function add(user) {
-  return db("users_table").insert(user);
+  return db("users_table").insert(user).then(ids=>{
+    const id = ids[0]
+    return findById(id)
+  });
 }
 
 function find() {
