@@ -2,8 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const server = express();
 const helmet = require("helmet");
+const cors = require('cors')
 server.use(helmet());
 server.use(express.json());
+server.use(cors())
 
 const UserRouter = require("../Routes/users/users-route");
 const RegisterRoute = require("../Routes/auth/auth-route");
