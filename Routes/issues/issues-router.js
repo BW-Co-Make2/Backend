@@ -3,7 +3,7 @@ const Issue = require("./issues-model");
 const restricted = require("../auth/restricted-mw");
 
 function bodycheck(req, res, next) {
-  if (req.body.title && req.body.description && req.body.user_id) {
+  if (req.body.title && req.body.description) {
     next();
   } else {
     res.status(400).json({ Message: "Please Fill in all the required fields" });
