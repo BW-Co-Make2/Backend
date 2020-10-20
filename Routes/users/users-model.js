@@ -20,8 +20,4 @@ function findBy(filter) {
 function add(user) {
   return db("users_table")
     .insert(user)
-    .then((ids) => {
-      console.log(ids)
-      return findById(ids);
-    });
 }
