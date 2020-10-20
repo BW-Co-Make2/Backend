@@ -13,6 +13,7 @@ exports.up = function (knex) {
           .onDelete("RESTRICT")
           .onUpdate("CASCADE");
     })
+    //THIS TABLE IS USELESS AND DOES NOTHING
     .createTable("issue_list", (table) => {
       table.increments(),
         table
