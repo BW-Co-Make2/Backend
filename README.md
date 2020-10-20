@@ -29,11 +29,11 @@
 
 ```JSON
 {
-    "title": "issue title",  // This is required
-    "description": "description of issue",// This is required
+    "title": "issue title", This is required
+    "description": "description of issue",This is required
     "location": "",
     "date": "",
-    "user_id": "This is the id that the user is given when he is created" // This is required
+    "user_id": "This is the id that the user is given when he is created"This is required
 }
 ```
 
