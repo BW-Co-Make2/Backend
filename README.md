@@ -24,3 +24,24 @@
 | GET         | /issue/private/:id      | Resolves to all the posts basted on that users ID |
 | GET         | /issue/private/post/:id | Resolves to one post by that user and issue ID    |
 | DELETE      | /issue/:id              | Removes an issue based on its Id                  |
+
+# Structure for when doing a post of a new Issue
+
+```JSON
+{
+    "title": issue title,  // This is required
+    "description": description of issue,// This is required
+    "location": "",
+    "date": "",
+    "user_id": This is the id that the user is given when he is created // This is required
+}
+```
+
+# Structure for when creating a new user for /register
+
+```JSON
+{
+"username": "",
+"password": ""
+}
+```
