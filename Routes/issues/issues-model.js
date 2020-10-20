@@ -17,7 +17,7 @@ function getIssueById(id) {
 }
 //This returns all the issues that have been posted
 function getPublic() {
-  return db("issue").select("title", "description", "location");
+  return db("issue").select("title", "description", "location","vote_count");
 }
 // This adds an issue
 function add(issue) {
