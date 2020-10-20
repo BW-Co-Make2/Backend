@@ -9,9 +9,11 @@ server.use(cors())
 
 const UserRouter = require("../Routes/users/users-route");
 const RegisterRoute = require("../Routes/auth/auth-route");
+const IssueRoute = require('../Routes/issues/issues-router')
 
 server.use("/user", UserRouter);
 server.use("/auth", RegisterRoute);
+server.use('/issue', IssueRoute)
 
 server.get("/", (req, res) => {
   res.status(200).json({ Server: "API working" });
