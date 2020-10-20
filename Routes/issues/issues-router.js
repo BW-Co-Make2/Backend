@@ -45,6 +45,7 @@ router.get("/private/:id", restricted, (req, res) => {
         .json({ Message: "Server failed to get your issue posts" });
     });
 });
+
 // this gets a users post by its id
 router.get("/private/post/:id",restricted, (req, res) => {
   Issue.getIssueById(req.params.id)
@@ -55,6 +56,7 @@ router.get("/private/post/:id",restricted, (req, res) => {
       res.status(500).json({ Message: err.message, post: req.params });
     });
 });
+
 //this deletes issue post
 router.delete("/:id",restricted, (req, res) => {
   Issue.remove(req.params.id)
