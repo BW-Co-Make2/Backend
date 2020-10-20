@@ -11,7 +11,7 @@ function find() {
   return db("users_table").select("id", "username").orderBy("id");
 }
 function findById(id) {
-  return db("users_table").where({ id });
+  return db("users_table").where(id, "users_table");
 }
 function findBy(filter) {
   return db("users_table").where(filter);
