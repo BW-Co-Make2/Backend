@@ -25,7 +25,7 @@
 | GET         | /issue/private/post/:id | Resolves to one post by that user and issue ID    |
 | DELETE      | /issue/:id              | Removes an issue based on its Id                  |
 
-# Structure for when doing a post of a new Issue
+# Structure for when doing a post of a new Issue AND Updating
 
 ```JSON
 {
