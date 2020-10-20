@@ -11,26 +11,11 @@ exports.up = function (knex) {
           .unsigned()
           .references("users_table.id")
           .onDelete("RESTRICT")
-          .onUpdate("CASCADE");
+          .onUpdate("CASCADE"),
+          table.integer('vote_count')
     })
-    //THIS TABLE IS USELESS AND DOES NOTHING
-    .createTable("issue_list", (table) => {
-      table.increments(),
-        table
-          .integer("user_id")
-          .unsigned()
-          .references("users_table.id")
-          .onDelete("RESTRICT")
-          .onUpdate("CASCADE");
-      table
-        .integer("issue_id")
-        .unsigned()
-        .references("issue.id")
-        .onDelete("RESTRICT")
-        .onUpdate("CASCADE");
-    });
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTableIfExists("issue_list").dropTableIfExists("issue");
+  return knex.schema.dropTableIfExists("issue");
 };
