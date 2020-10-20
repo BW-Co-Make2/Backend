@@ -17,7 +17,7 @@ function getIssueById(id) {
 }
 //This returns all the issues that have been posted
 function getPublic() {
-  return db("issue");
+  return db("issue").select("title", "description", "location");
 }
 // This adds an issue
 function add(issue) {
@@ -25,15 +25,15 @@ function add(issue) {
 }
 
 ///NEED TO ADD FUNCTIONALITY WHERE USER CAN ONLY EDIT THIER OWN
-/// ISSUES THAT THEY CREATED IF THEY DIDNT CREATE IT THEY CAN NOT 
+/// ISSUES THAT THEY CREATED IF THEY DIDNT CREATE IT THEY CAN NOT
 //  DELETE OR EDIT IT
- 
 
-// need to find a way to get a specific mosts id probably find by id then remove
+//This removes a post issue
 function remove(id) {
   return db("issue").where({ "issue.id": id }).delete();
 }
 
-
 // This will update a issue
-function update() {}
+function update(id, changes) {
+  return db("issue").where({ "issue.id": id }).update(changes);
+}

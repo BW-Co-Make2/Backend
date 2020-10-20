@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const Issue = require("./issues-model");
+const restricted = require("../auth/restricted-mw");
 
 function bodycheck(req, res, next) {
-  if (req.body) {
+  if (req.body.title && req.body.description && req.body.user_id) {
     next();
   } else {
     res.status(400).json({ Message: "Please Fill in all the required fields" });
@@ -10,7 +11,7 @@ function bodycheck(req, res, next) {
 }
 
 // Creates a new issue returns the id currently
-router.post("/new", bodycheck, (req, res) => {
+router.post("/", bodycheck,restricted, (req, res) => {
   const issue = req.body;
   Issue.add(issue)
     .then((resp) => {
@@ -21,8 +22,8 @@ router.post("/new", bodycheck, (req, res) => {
     });
 });
 
-//This returns all the issues that have been posted
-router.get("/public", (req, res) => {
+//This returns all the issues that have been posted by everybody
+router.get("/", (req, res) => {
   Issue.getPublic()
     .then((resp) => {
       res.status(200).json({ data: resp });
@@ -33,7 +34,7 @@ router.get("/public", (req, res) => {
 });
 
 //This returns a users issues that he or she have posted
-router.get("/private/:id", (req, res) => {
+router.get("/private/:id", restricted, (req, res) => {
   Issue.getPrivate(req.params.id)
     .then((resp) => {
       res.status(200).json({ data: resp });
@@ -44,21 +45,33 @@ router.get("/private/:id", (req, res) => {
         .json({ Message: "Server failed to get your issue posts" });
     });
 });
-// this gets a users post by its id 
-router.get("/private/post/:id", (req, res) => {
+// this gets a users post by its id
+router.get("/private/post/:id",restricted, (req, res) => {
   Issue.getIssueById(req.params.id)
     .then((resp) => {
       res.status(200).json({ Issue: resp });
     })
     .catch((err) => {
-      res.status(500).json({ Message: err.message,post: req.params  });
+      res.status(500).json({ Message: err.message, post: req.params });
     });
 });
 //this deletes issue post
-router.delete("/private/post/:id", (req, res) => {
+router.delete("/:id",restricted, (req, res) => {
   Issue.remove(req.params.id)
     .then((resp) => {
-      res.status(200).json({ Removed: resp, });
+      res.status(200).json({ Removed: resp });
+    })
+    .catch((err) => {
+      res.status(500).json({ message: err.message });
+    });
+});
+
+router.put("/:id", bodycheck,restricted, (req, res) => {
+  const id = req.params.id;
+  const update = req.body;
+  Issue.update(id, update)
+    .then((resp) => {
+      res.status(201).json({ Update: resp });
     })
     .catch((err) => {
       res.status(500).json({ message: err.message });
