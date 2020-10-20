@@ -4,14 +4,14 @@
 
 | HTTP method | to             | Description                    |
 | ----------- | -------------- | ------------------------------ |
-| POST        | /auth/register | POST user to the DB            |
+| POST        | /auth/register | adds user to the DB            |
 | POST        | /auth/login    | Returns the username and token |
 
 # Public Issue Endpoint
 
-| HTTP Method | to     | Description                                   |
-| ----------- | ------ | --------------------------------------------- |
-| GET         | /issue | Resolves to a title, description and location |
+| HTTP Method | to     | Description                                                            |
+| ----------- | ------ | ---------------------------------------------------------------------- |
+| GET         | /issue | Resolves to a title, description and location of all the posted issues |
 
 # Issue Endpoints
 
