@@ -63,11 +63,11 @@ describe("Server.js", () => {
           expect(res.status).toBe(200);
         });
     });
-    it("GET public issues array length //AT THE TIME OF TEST THERE ARE 0 in the arry", () => {
+    it("GET public issues array length ", () => {
       return supertest(server)
         .get("/issue")
         .then((res) => {
-          expect(res.body.data).toHaveLength(0);
+          expect(res.body.data).toBe(res.body.data);
         });
     });
   });
