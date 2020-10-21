@@ -33,6 +33,16 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/public/post/:id", (req, res) => {
+  Issue.getIssueById(req.params.id)
+    .then((resp) => {
+      res.status(200).json({ Issue: resp });
+    })
+    .catch((err) => {
+      res.status(500).json({ Message: err.message, post: req.params });
+    });
+});
+
 //This returns a users issues that he or she have posted
 router.get("/private/:id", restricted, (req, res) => {
   Issue.getPrivate(req.params.id)

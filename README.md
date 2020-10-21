@@ -9,9 +9,10 @@
 
 # Public Issue Endpoint
 
-| HTTP Method | to     | Description                                                            |
-| ----------- | ------ | ---------------------------------------------------------------------- |
-| GET         | /issue | Resolves to a title, description and location of all the posted issues |
+| HTTP Method | to                     | Description                                                            |
+| ----------- | ---------------------- | ---------------------------------------------------------------------- |
+| GET         | /issue                 | Resolves to a title, description and location of all the posted issues |
+| GET         | /issue/public/post/:id | resolves to a specific issue                                           |
 
 # Issue Endpoints
 
