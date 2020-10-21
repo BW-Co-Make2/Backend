@@ -24,7 +24,7 @@ describe("Server.js", () => {
 
   describe("Testing the Registration and Login", () => {
     let user = {
-      username: "Tammy",
+      username: "Victor",
       password: "pass",
     };
     it.skip("should resolve to 201 when registering", () => {
@@ -63,15 +63,15 @@ describe("Server.js", () => {
           expect(res.status).toBe(200);
         });
     });
-    it("GET public issues array length //AT THE TIME OF TEST THERE ARE 4 in the arry", () => {
+    it("GET public issues array length //AT THE TIME OF TEST THERE ARE 0 in the arry", () => {
       return supertest(server)
         .get("/issue")
         .then((res) => {
-          expect(res.body.data).toHaveLength(4);
+          expect(res.body.data).toHaveLength(0);
         });
     });
   });
-// Have to be logged in and have a token to use these
+  // Have to be logged in and have a token to use these
   describe("Testing the Private GET", () => {
     it("Should Resolve to 401 without the token", () => {
       return supertest(server)
